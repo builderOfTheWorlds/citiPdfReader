@@ -7,8 +7,6 @@ def parsePDFFile(pdfFile):
 
     regexList = {
         "billingPeriodRegex": r"(\d\d\/\d\d\/\d\d\-\d\d\/\d\d\/\d\d)",
-        # "billingStartDate": "",
-        # "billingEndDate": "",
         "paymentsRegex": r"Payments - (\$[\d\,]*\d+\.\d\d)",
         "creditsRegex": r"Credits - (\$[\d\,]*\d+\.\d\d)",
         "purchasesRegex": r"Purchases \+ (\$[\d\,]*\d+\.\d\d)",
@@ -23,11 +21,11 @@ def parsePDFFile(pdfFile):
         "balanceYTDRewardsRegex": r"Year To Date : (\$[\d\,]*\d+\.\d\d)",
         "earnedThisPeriodRegex": r"Earned this period\s+\.+\s+\+(\$[\d\,]*\d+\.\d\d)",
         "4PercentRegex": r"4% on eligible gas worldwide, including  gas at Costco\s+\.+\s+\+(\$[\d\,]*\d+\.\d\d)",
+        "4PercentRegexUpdated": r"4% cash back on eligible gas and electric vehicle \(EV\) charging purchases worldwide, including gas and EV charging at\s+Costco\s+\.+\s+\+(\$[\d\,]*\d+\.\d\d)",
         "3PercentResturauntsRegex": r"3% on restaurants\s+\.+\s+\+(\$[\d\,]*\d+\.\d\d)",
         "3PercentTravelRegex": r"3% on eligible travel worldwide\s+\.+\s+\+(\$[\d\,]*\d+\.\d\d)",
         "2PercentCostcoRegex": r"2% on Costco and Costco.com\s+\.+\s+\+(\$[\d\,]*\d+\.\d\d)",
         "1PercentOtherRegex": r"1% on all other purchases\s+\.+\s+\+(\$[\d\,]*\d+\.\d\d)",
-        # "textRegex"
     }
 
     pdfInfo = {
@@ -48,6 +46,7 @@ def parsePDFFile(pdfFile):
         "balanceYTDRewardsRegex": "",
         "earnedThisPeriodRegex": "",
         "4PercentRegex": "",
+        "4PercentRegexUpdated":"",
         "3PercentResturauntsRegex": "",
         "3PercentTravelRegex": "",
         "2PercentCostcoRegex": "",
@@ -63,7 +62,7 @@ def parsePDFFile(pdfFile):
         singleLine=text.replace("\n"," ")
 
         for regex in regexList:
-            # print("^^^^",regex)
+            print("^^^^",regex)
             # if regex == "CostcoEarnedRegex":
                 # print()
             regexResult = re.search(regexList[regex], singleLine)
